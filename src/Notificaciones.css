@@ -1,0 +1,30 @@
+.notificaciones-container {
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .notificaciones-container h1 {
+    margin-bottom: 20px;
+  }
+  
+  .notificaciones-container p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .multas-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .multas-list li {
+    background-color: #fff;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  

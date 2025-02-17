@@ -1,0 +1,56 @@
+/* index.css */
+
+/* Establece el fondo negro globalmente */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000000;  /* Fondo negro global */
+  color: white;  /* Texto blanco para contraste */
+  font-family: Arial, sans-serif;
+}
+
+/* Aseguramos que el contenido de la página ocupe toda la pantalla */
+#root {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Aseguramos que los formularios tengan un fondo blanco semitransparente */
+.login-container, .registrar-container, .administracion-container {
+  background-color: rgba(255, 255, 255, 0.9);  /* Fondo blanco semitransparente */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para los botones */
+button {
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+  background-color: #4B0082;  /* Morado oscuro */
+  color: white;
+  border: 1px solid #4B0082;
+  border-radius: 4px;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #3e0063;
+  border-color: #3e0063;
+}
+
+/* Estilo para los inputs */
+input {
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
