@@ -52,4 +52,9 @@ const Administracion = () => {
   );
 };
 
+const handleLogout = () => {
+  localStorage.removeItem('token');  // Borra el token
+  navigate('/login');  // Redirige al login
+};
+
 export default Administracion;

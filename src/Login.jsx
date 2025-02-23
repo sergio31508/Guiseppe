@@ -1,34 +1,32 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import './login.css';
 
 const Login = () => {
-  const [phone, setPhone] = useState('');
+  const [telefono, setTelefono] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+  const handleLogin = async (event) => {
+    event.preventDefault(); // Evita que la página se recargue
 
     try {
-      // Realiza la solicitud POST al backend
-      const response = await axios.post('http://localhost:3000/api/usuarios/login', {
-        phone,
-        password
+      const response = await fetch('http://localhost:3000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ telefono, password }),
       });
 
-      setLoading(false);
-      console.log('Respuesta del servidor:', response.data);
+      const data = await response.json();
 
-      // Redirige si el login es exitoso
-      navigate('/administracion');
-
+      if (response.ok) {
+        localStorage.setItem('token', data.token);
+        navigate('/administracion');
+      } else {
+        alert(data.message);
+      }
     } catch (error) {
-      setLoading(false);
-      console.error('Error al iniciar sesión:', error.response?.data || error);
+      alert('Error en la conexión con el servidor.');
     }
   };
 
@@ -39,8 +37,8 @@ const Login = () => {
         <input
           type="text"
           placeholder="Número de Teléfono"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
+          value={telefono}
+          onChange={(e) => setTelefono(e.target.value)}
         />
         <input
           type="password"
@@ -49,9 +47,7 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <div className="button-group">
-          <button type="submit" disabled={loading}>
-            {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
-          </button>
+          <button type="submit">Iniciar Sesión</button>
           <button type="button" onClick={() => navigate('/registrar')}>Registrar</button>
         </div>
       </form>
